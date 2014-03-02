@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"flag"
 	"fmt"
 	"image"
 	"image/color"
@@ -13,10 +12,14 @@ import (
 )
 
 func main() {
-	var filepath = flag.String("input", "", "Image to be checked.")
-	flag.Parse()
+	if len(os.Args) < 2 {
+		fmt.Println("Usage: go-porndetect <Image file name to be checked>.")
+		return
+	}
 
-	im, _, err := decode(*filepath)
+	var filepath = os.Args[1]
+
+	im, _, err := decode(filepath)
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -24,9 +27,9 @@ func main() {
 
 	isPorn := imageCheck(im)
 	if isPorn {
-		fmt.Println(*filepath + "is a porn image.")
+		fmt.Println(filepath + "is a porn image.")
 	} else {
-		fmt.Println(*filepath + "is NOT a porn image.")
+		fmt.Println(filepath + "is NOT a porn image.")
 	}
 }
 
