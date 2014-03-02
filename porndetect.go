@@ -27,9 +27,9 @@ func main() {
 
 	isPorn := imageCheck(im)
 	if isPorn {
-		fmt.Println(filepath + "is a porn image.")
+		fmt.Println(filepath + " is a porn image.")
 	} else {
-		fmt.Println(filepath + "is NOT a porn image.")
+		fmt.Println(filepath + " is NOT a porn image.")
 	}
 }
 
